@@ -10,18 +10,28 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '8.0.x'
 
+    - name: 🔍 Debug folder structure
+      run: |
+        echo "Current Directory:"
+        pwd
+        echo "Files and folders:"
+        dir
+        echo "Listing all contents recursively:"
+        dir /s
+
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore EMS.sln
 
     - name: Build solution
-      run: dotnet build --no-restore --configuration Debug
+      run: dotnet build EMS.sln --no-restore --configuration Debug
 
     - name: Run tests with coverage
       run: dotnet test test/EMS.Tests/EMS.Tests.csproj --collect:"XPlat Code Coverage" /p:CoverletOutputFormat=opencover
