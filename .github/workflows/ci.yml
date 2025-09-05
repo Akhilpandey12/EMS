@@ -18,15 +18,15 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
--    name: 🔍 Debug folder structure 
-     shell: pwsh
-     run: |
-     Write-Host "Current Directory:"
-     Get-Location
-     Write-Host "Files and folders:"
-     Get-ChildItem
-     Write-Host "Listing all contents recursively:"
-     Get-ChildItem -Recurse -Force -ErrorAction SilentlyContinue
+# -    name: 🔍 Debug folder structure 
+#      shell: pwsh
+#      run: |
+#      Write-Host "Current Directory:"
+#      Get-Location
+#      Write-Host "Files and folders:"
+#      Get-ChildItem
+#      Write-Host "Listing all contents recursively:"
+#      Get-ChildItem -Recurse -Force -ErrorAction SilentlyContinue
 
     - name: Restore dependencies
       run: dotnet restore EMS.sln
